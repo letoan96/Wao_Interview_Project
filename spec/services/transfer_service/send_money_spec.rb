@@ -62,7 +62,7 @@ module TransferService
         result = SendMoney.call(
           sender_id: sender.id,
           receiver_id: receiver.id,
-          amount: 100001 #invalid amount ( 100k > 80k )
+          amount: 100001 #invalid amount ( 100001 > 100000 )
         )
         expect(result.success?).to eq(false)
         expect(result.errors[:balance][0]).to eq('Số dư tài khoản không đủ!')
