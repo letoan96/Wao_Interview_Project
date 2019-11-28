@@ -5,7 +5,7 @@ module TransferService
                 :receiver,
                 :amount
 
-    def initialize(sender_id:, receiver_id:, amount: )
+    def initialize(sender_id:, receiver_id:, amount:)
       # accept that we can pass in user objects. However, I prefer using sender_id and receiver_id in this case for better illustration
       @sender = User.find_by(id: sender_id)
       @receiver = User.find_by(id: receiver_id)
