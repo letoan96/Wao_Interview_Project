@@ -30,6 +30,8 @@ module TransferService
           receiver_balance.save!
         end
       end
+      rescue ActiveRecord::RecordInvalid
+        return user_balance_err
     end
 
     def user_balance_err
