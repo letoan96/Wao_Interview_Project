@@ -69,5 +69,20 @@ module TransferService
       end
     end
 
+    context "when everything is fine" do
+      it 'will success' do
+        sender_balance # invoke user's balance
+        receiver_balance # invoke user's balance
+        result = SendMoney.call(
+          sender_id: sender.id,
+          receiver_id: receiver.id,
+          amount: 50000
+        )
+        expect(result.success?).to eq(true)
+        expect(sender.balances.first.amount.to_i).to eql(30000)
+        expect(receiver.balances.first.amount.to_i).to eql(50000)
+      end
+    end
+
   end
 end
