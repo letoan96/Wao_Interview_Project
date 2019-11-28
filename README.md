@@ -1,24 +1,17 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
+* Author: letranthetoan@gmail.com
 * Ruby version
-
+    Ruby 2.4.0p0 (2016-12-24 revision 57164) [x86_64-darwin17]
+    Rails 5.2.4
+    Postgresql
+    Rspec for testing
 * System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
+    gem 'factory_bot_rails'
+    gem 'rspec-rails'
+    gem 'database_cleaner'
+    gem 'simple_command'
+    gem 'faker'
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    `bundle exec rspec`
+* Services
+    TransferService
