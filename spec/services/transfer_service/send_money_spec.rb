@@ -4,7 +4,7 @@ module TransferService
   RSpec.describe SendMoney do
     let(:sender) { create(:user) }
     let(:receiver) { create(:user) }
-    let(:sender_balance) { create(:balance, user_id: sender.id, amount: 80000) }
+    let(:sender_balance) { create(:balance, user_id: sender.id, amount: 100000) }
     let(:receiver_balance) { create(:balance, user_id: receiver.id, amount: 0) }
 
     context 'when sender is not valid' do
@@ -62,7 +62,7 @@ module TransferService
         result = SendMoney.call(
           sender_id: sender.id,
           receiver_id: receiver.id,
-          amount: 100000 #invalid amount ( 100k > 80k )
+          amount: 100001 #invalid amount ( 100k > 80k )
         )
         expect(result.success?).to eq(false)
         expect(result.errors[:balance][0]).to eq('Số dư tài khoản không đủ!')
@@ -76,11 +76,11 @@ module TransferService
         result = SendMoney.call(
           sender_id: sender.id,
           receiver_id: receiver.id,
-          amount: 50000
+          amount: 20000
         )
         expect(result.success?).to eq(true)
-        expect(sender.balances.first.amount.to_i).to eql(30000)
-        expect(receiver.balances.first.amount.to_i).to eql(50000)
+        expect(sender.balances.first.amount.to_i).to eql(80000)
+        expect(receiver.balances.first.amount.to_i).to eql(20000)
       end
     end
 
